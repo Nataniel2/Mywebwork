@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Finance Guide - Your go-to resource for money management, investments, accounting, and more. Find expert tips, tools, and calculators to take control of your finances.">
+    <meta name="keywords" content="finance guide, money management, financial calculators, investments, accounting, financial tips, budgeting, investing, saving money">
+    <meta name="author" content="Finance Guide Team">
+
+    <!-- Open Graph (for social media sharing) -->
+    <meta property="og:title" content="Finance Guide - Manage Your Finances Better">
+    <meta property="og:description" content="Get practical advice, calculators, and guides on managing money, investing, and organizing finances for personal or business use.">
+    <meta property="og:image" content="https://yourwebsite.com/thumbnail.jpg"> <!-- Link to a thumbnail image -->
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card (for better Twitter sharing) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Finance Guide - Manage Your Finances Better">
+    <meta name="twitter:description" content="Find expert advice on budgeting, investing, and financial planning with Finance Guide. Access free financial calculators and tools.">
+    <meta name="twitter:image" content="https://yourwebsite.com/thumbnail.jpg">
+
+    <!-- SEO: Structured Data (Schema.org for Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Finance Guide",
+      "url": "https://yourwebsite.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourwebsite.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <title>Finance Guide - Money Management, Investments, and Financial Calculators</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+</head>
+<body>
+
+
+    <header>
+        <h1>Finance Guide</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Search bar (SEO optimized) -->
+        <section id="search">
+            <form action="/search" method="GET">
+                <input type="text" name="q" placeholder="Search the site..." aria-label="Search" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <!-- Home section -->
+        <section id="home">
+            <h2>Welcome to Finance Guide</h2>
+            <p>Here you'll find tips and information on money management, investments, accounting, and much more.</p>
+        </section>
+
+        <!-- Blog section -->
+        <section id="blog">
+            <h2>Blog</h2>
+            <article>
+                <h3>Tips to Improve Your Money Management</h3>
+                <p>Learn how to control your spending and save for the future. <a href="#">Read more...</a></p>
+            </article>
+            <article>
+                <h3>How to Start Investing</h3>
+                <p>Discover the best strategies to start investing safely. <a href="#">Read more...</a></p>
+            </article>
+        </section>
+
+        <!-- Financial Calculators section -->
+        <section id="calculators">
+            <h2>Financial Calculators</h2>
+
+            <!-- Link to all calculators in a bar -->
+            <div class="calculator-bar">
+                <a href="calculators.html">Access all calculators</a>
+            </div>
+
+            <!-- Example calculator: Compound Interest -->
+            <h3>Compound Interest Calculator</h3>
+            <label for="principal">Initial Amount ($): </label>
+            <input type="number" id="principal" placeholder="Enter initial amount"><br>
+
+            <label for="rate">Annual Interest Rate (%): </label>
+            <input type="number" id="rate" placeholder="Enter interest rate"><br>
+
+            <label for="time">Number of years: </label>
+            <input type="number" id="time" placeholder="Enter time in years"><br>
+
+            <label for="compound">Times interest is compounded per year: </label>
+            <input type="number" id="compound" placeholder="Enter number of times"><br>
+
+            <button onclick="calculateCompoundInterest()">Calculate</button>
+
+            <p id="result"></p>
+        </section>
+
+        <!-- Guides and Tutorials (with links in a bar) -->
+        <section id="guides">
+            <h2>Guides and Tutorials</h2>
+            <div class="tutorial-bar">
+                <a href="#">How to Create a Family Budget</a>
+                <a href="#">Complete Guide to Investments for Beginners</a>
+                <a href="#">Financial Organization for Small Businesses</a>
+            </div>
+        </section>
+
+        <!-- Financial News -->
+        <section id="news">
+            <h2>Financial News</h2>
+            <article>
+                <h3>Financial Market Updates</h3>
+                <p>Stay informed about the latest trends and news in the market. <a href="#">Read more...</a></p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>For inquiries or more information, contact us at: info@financeguide.com</p>
+        </section>
+        <p>&copy; 2024 Finance Guide. All rights reserved.</p>
+    </footer>
+
+    <!-- Translation for multiple languages -->
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Compound interest calculator script -->
+    <script>
+        function calculateCompoundInterest() {
+            var principal = document.getElementById('principal').value;
+            var rate = document.getElementById('rate').value / 100;
+            var time = document.getElementById('time').value;
+            var compound = document.getElementById('compound').value;
+
+            // Compound interest formula: A = P (1 + r/n)^(nt)
+            var amount = principal * Math.pow((1 + rate / compound), (compound * time));
+            var result = "The final amount is $" + amount.toFixed(2);
+
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>

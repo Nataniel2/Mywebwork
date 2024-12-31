@@ -1,0 +1,274 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-image: url('header-background.jpg'); /* Substitua por uma imagem válida */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Ajuste para telas menores */
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    flex-wrap: wrap; /* Permite que o menu seja flexível em telas pequenas */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Estilos principais */
+main {
+    padding: 15px;
+    max-width: 100%; /* Tornar responsivo */
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tamanhos de títulos ajustados para mobile */
+h2 {
+    font-size: 1.5em; /* Reduzido para melhor ajuste em mobile */
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Seção de pesquisa */
+#search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search input[type="text"] {
+    padding: 10px;
+    width: 90%; /* Aumenta a largura em telas pequenas */
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#search button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search button:hover {
+    background-color: #555;
+}
+
+/* Seção de calculadoras */
+#calculators h3 {
+    margin-top: 0;
+}
+
+.calculator-bar {
+    background-color: #e4e4e4;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.calculator-bar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.calculator-bar a:hover {
+    background-color: #333;
+    color: white;
+}
+
+#calculators input[type="number"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#calculators button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calculators button:hover {
+    background-color: #555;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Seção de Guias */
+.tutorial-bar {
+    display: flex;
+    flex-direction: column; /* Organizar verticalmente em mobile */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tutorial-bar a {
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tutorial-bar a:hover {
+    background-color: #ddd;
+}
+
+/* Artigos e Notícias */
+article {
+    margin-bottom: 20px;
+}
+
+article h3 {
+    font-size: 1.2em; /* Tamanho reduzido em telas pequenas */
+    margin-bottom: 10px;
+}
+
+article p {
+    margin-bottom: 10px;
+}
+
+article a {
+    color: #333;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+article a:hover {
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer h2 {
+    margin-top: 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    nav ul {
+        flex-direction: column; /* Menu se torna vertical */
+    }
+
+    nav ul li a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    #search input[type="text"] {
+        width: 100%;
+    }
+
+    .calculator-bar {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    article h3 {
+        font-size: 1.1em;
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    article h3 {
+        font-size: 1em;
+    }
+}

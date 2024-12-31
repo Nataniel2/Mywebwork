@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculators</title>
+    <link rel="stylesheet" href="style.css">  <!-- Estilo externo para a página -->
+</head>
+<body>
+    <header>
+        <h1>Financial Calculators</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#loan-calculator">Loan Calculator</a></li>
+                <li><a href="#compound-interest">Compound Interest Calculator</a></li>
+                <li><a href="#retirement-savings">Retirement Savings Calculator</a></li>
+                <li><a href="guides.html">Guides</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Loan Calculator -->
+        <section id="loan-calculator">
+            <h2>Loan Calculator</h2>
+            <form id="loanForm">
+                <label for="loanAmount">Loan Amount:</label>
+                <input type="number" id="loanAmount" placeholder="Enter loan amount">
+
+                <label for="interestRate">Interest Rate (%):</label>
+                <input type="number" id="interestRate" placeholder="Enter interest rate">
+
+                <label for="loanTerm">Loan Term (years):</label>
+                <input type="number" id="loanTerm" placeholder="Enter loan term in years">
+
+                <button type="button" onclick="calculateLoan()">Calculate</button>
+
+                <p id="loanResult"></p>
+            </form>
+        </section>
+
+        <!-- Calculator Links Bar -->
+        <section class="calculator-bar">
+            <h3>Access More Calculators</h3>
+            <a href="#compound-interest">Compound Interest Calculator</a>
+            <a href="#retirement-savings">Retirement Savings Calculator</a>
+        </section>
+
+        <!-- Compound Interest Calculator -->
+        <section id="compound-interest">
+            <h2>Compound Interest Calculator</h2>
+            <form id="compoundForm">
+                <label for="principal">Principal Amount:</label>
+                <input type="number" id="principal" placeholder="Enter initial amount">
+
+                <label for="rate">Interest Rate (%):</label>
+                <input type="number" id="rate" placeholder="Enter interest rate">
+
+                <label for="time">Time (years):</label>
+                <input type="number" id="time" placeholder="Enter number of years">
+
+                <label for="compounds">Compounds per year:</label>
+                <input type="number" id="compounds" placeholder="Enter number of compounds per year">
+
+                <button type="button" onclick="calculateCompound()">Calculate</button>
+
+                <p id="compoundResult"></p>
+            </form>
+        </section>
+
+        <!-- Retirement Savings Calculator -->
+        <section id="retirement-savings">
+            <h2>Retirement Savings Calculator</h2>
+            <form id="retirementForm">
+                <label for="currentSavings">Current Savings ($):</label>
+                <input type="number" id="currentSavings" placeholder="Enter current savings">
+
+                <label for="monthlyContribution">Monthly Contribution ($):</label>
+                <input type="number" id="monthlyContribution" placeholder="Enter monthly contribution">
+
+                <label for="rateOfReturn">Annual Rate of Return (%):</label>
+                <input type="number" id="rateOfReturn" placeholder="Enter annual rate of return">
+
+                <label for="yearsToRetire">Years Until Retirement:</label>
+                <input type="number" id="yearsToRetire" placeholder="Enter years until retirement">
+
+                <button type="button" onclick="calculateRetirement()">Calculate</button>
+
+                <p id="retirementResult"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Financial Guide. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loan Calculator Logic
+        function calculateLoan() {
+            var amount = parseFloat(document.getElementById('loanAmount').value);
+            var interest = parseFloat(document.getElementById('interestRate').value) / 100;
+            var years = parseFloat(document.getElementById('loanTerm').value);
+
+            if (isNaN(amount) || isNaN(interest) || isNaN(years)) {
+                document.getElementById('loanResult').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            var monthlyRate = interest / 12;
+            var numPayments = years * 12;
+            var monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments));
+
+            document.getElementById('loanResult').innerText = "Monthly Payment: $" + monthlyPayment.toFixed(2);
+        }
+
+        // Compound Interest Calculator Logic
+        function calculateCompound() {
+            var principal = parseFloat(document.getElementById('principal').value);
+            var rate = parseFloat(document.getElementById('rate').value) / 100;
+            var time = parseFloat(document.getElementById('time').value);
+            var compounds = parseFloat(document.getElementById('compounds').value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(time) || isNaN(compounds)) {
+                document.getElementById('compoundResult').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            var compoundInterest = principal * Math.pow((1 + rate / compounds), compounds * time);
+
+            document.getElementById('compoundResult').innerText = "Total Amount: $" + compoundInterest.toFixed(2);
+        }
+
+        // Retirement Savings Calculator Logic
+        function calculateRetirement() {
+            var currentSavings = parseFloat(document.getElementById('currentSavings').value);
+            var monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value);
+            var rateOfReturn = parseFloat(document.getElementById('rateOfReturn').value) / 100;
+            var yearsToRetire = parseFloat(document.getElementById('yearsToRetire').value);
+
+            if (isNaN(currentSavings) || isNaN(monthlyContribution) || isNaN(rateOfReturn) || isNaN(yearsToRetire)) {
+                document.getElementById('retirementResult').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            var months = yearsToRetire * 12;
+            var totalSavings = currentSavings;
+
+            for (var i = 0; i < months; i++) {
+                totalSavings += monthlyContribution;
+                totalSavings *= (1 + rateOfReturn / 12);
+            }
+
+            document.getElementById('retirementResult').innerText = "Total Savings at Retirement: $" + totalSavings.toFixed(2);
+        }
+    </script>
+</body>
+</html>
